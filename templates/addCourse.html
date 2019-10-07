@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container" style="margin-top: 2%">
+
+    <form>
+
+        <div class="form-group">
+            <label for="domainSelect">Select Domain</label>
+            <select class="form-control" id="domainSelect">
+                <option>Programming Languages</option>
+                <option>Technologies</option>
+                <option>Data Science</option>
+                <option>Design</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+                <label for="keywordSelect">Select Keyword</label>
+                <select class="form-control" id="keywordSelect">
+                    <option>Python</option>
+                    <option>Java</option>
+                    <option>C</option>
+                    <option>Design</option>
+                </select>
+            </div>
+
+        <div class="form-group">
+            <label for="title">Course Title</label>
+            <input type="text" class="form-control" id="title" placeholder="Introduction to Computer Science and Programming Using Python">
+        </div>
+
+        <div class="form-group">
+                <label for="courseTypeSelect">Select Type</label>
+                <select class="form-control" id="courseTypeSelect">
+                    <option>Paid</option>
+                    <option>Not Paid</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                    <label for="courseMediumSelect">Select Medium</label>
+                    <select class="form-control" id="courseMediumSelect">
+                        <option>Video Tutorials</option>
+                        <option>Text Documents</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                        <label for="creator">Course Creator</label>
+                        <input type="text" class="form-control" id="creator" placeholder="Prof.Andrew N G">
+                    </div>
+                    
+                    <div class="form-group">
+                            <label for="courseProviderSelect">Select Provider</label>
+                            <select class="form-control" id="courseProviderSelect">
+                                <option>Coursera</option>
+                                <option>Udacity</option>
+                            </select>
+                        </div>
+
+        <div class="form-group">
+            <label for="description">Course Description</label>
+            <textarea class="form-control" id="description" placeholder="Add the  complete description here" rows="3"></textarea>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
