@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'travello.apps.TravelloConfig', 
+    'archivist_app.apps.ArchivistAppConfig', 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'archivist.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'travello',
+        'NAME': 'archivist',
         'USER': 'postgres',
         'PASSWORD': '1234',
         'HOST': 'localhost'
