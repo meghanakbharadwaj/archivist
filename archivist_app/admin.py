@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Course_Provider,Image_Source,Domains,Reviews,Course
+from archivist_app.models import *
 # Register your models here.
-my_models = [Course_Provider,Image_Source,Domains,Reviews,Course]
+my_models = [Course_Provider,Domains,Course,Reviews,Keywords]
 
 admin.site.register(my_models)
