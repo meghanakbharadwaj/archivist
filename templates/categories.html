@@ -10,33 +10,15 @@
         <p>Find the Best Courses & Tutorials here</p>
     </div>
 
-
     <div class="row flex">
+        {% for keyword in keywords %}
         <div class="col-lg-4 col-sm-6 col-xs-12">
             <a class="btn btn-lg btn-block btn-outline-dark" href="#" role="button"><img
-                    src="https://hackr.io/tutorials/javascript/logo-javascript.svg?ver=1553668920"
-                    height="50">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Javascript
+                    src="{{keyword.logo.url}}"
+                    height="50">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{keyword.keyword}}
             </a>
         </div>
-
-        <div class="col-lg-4 col-sm-6 col-xs-12">
-            <a class="btn btn-lg btn-block btn-outline-dark" href="#" role="button"><img
-                    src="https://hackr.io/tutorials/react-native/logo-react-native.svg?ver=1555132575"
-                    height="50">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; React Native
-            </a>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-xs-12">
-            <a class="btn btn-lg btn-block btn-outline-dark" href="#" role="button"><img
-                    src="https://hackr.io/tutorials/angular/logo-angular.svg?ver=1550774724"
-                    height="50">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Angular JS
-            </a>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-xs-12">
-            <a class="btn btn-lg btn-block btn-outline-dark" href="#" role="button"><img
-                    src="https://hackr.io/tutorials/angular/logo-angular.svg?ver=1550774724"
-                    height="50">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Angular JS
-            </a>
-        </div>
+        {% endfor %}
     </div>
 </div>
 
