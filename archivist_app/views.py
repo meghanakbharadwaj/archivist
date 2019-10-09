@@ -10,3 +10,6 @@ def homeView(request):
 
 def addCourseView(request):
     return render(request,'addCourse.html')
+
+def categoriesView(request):
+    return render(request,'categories.html')

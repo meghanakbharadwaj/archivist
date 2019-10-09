@@ -3,5 +3,5 @@ from archivist_app import views
 
 urlpatterns = [
     #path('',views.homeView,name = 'home')
-    path('',views.addCourseView,name = 'addCourse')
+    path('',views.categoriesView,name = 'categories')
 ]
