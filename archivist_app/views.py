@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from archivist_app.models import *
 
@@ -17,11 +17,11 @@ def categories(request):
     keywords = Keywords.objects.all()
     return render(request,'categories.html',{'keywords':keywords})
 
-def courses(request):
-    courses = Course.objects.all().filter(keyword__keyword = 'Python')
+def courses(request,key):
+    courses = Course.objects.all().filter(keyword__keyword = key)
     #courses = Course.objects.all()
     return render(request,'courseList.html',{'courses' : courses})
 
-#def courseLink(request):
-#    course = Course.objects.get(id = 1)
-#    return render(request,course.course_link)
+def courseLink(request,course_name):
+    course = Course.objects.get(title = course_name)
+    return redirect(course.course_link)

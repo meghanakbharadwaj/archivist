@@ -11,7 +11,7 @@
     <div class="row flex">
         {% for keyword in keywords %}
         <div class="col-lg-4 col-sm-6 col-xs-12">
-            <a class="btn btn-lg btn-block btn-outline-dark" href="{% url 'courses' %}" role="button" name = "{{keyword.keyword}}" ><img
+            <a class="btn btn-lg btn-block btn-outline-dark" href="{% url 'courses' key=keyword.keyword %}" role="button" name = "{{keyword.keyword}}" ><img
                     src="{{keyword.logo.url}}"
                     height="50">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{keyword.keyword}}
             </a>
