@@ -12,6 +12,7 @@ def homeView(request):
 def addCourseView(request):
     return render(request,'addCourse.html')
 
+
 def categories(request):
     keywords = Keywords.objects.all()
     return render(request,'categories.html',{'keywords':keywords})
