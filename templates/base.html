@@ -6,11 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Archivist</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/myStyles.css' %}">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -21,11 +21,23 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/52887b1f6b.js" crossorigin="anonymous"></script>
+<!--===============================================================================================-->
+<!-- LOGIN styles -->
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    
+<!--===============================================================================================-->
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark  " style="background-color:#154854;:#622a8c;">
-        <a class="navbar-brand" href="#">ARCHIVIST</a>
+            <a href="#" class="navbar-left"><img src="{% static 'images/logo3.png' %}" height="50"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -55,8 +67,9 @@
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-dark my-2 my-sm-0 " type="submit">Search</button>
+                <button class="btn btn-outline-light my-2 my-sm-0 " style="margin-right:50px;" type="submit">Search</button>
             </form>
+            <a role="button" class="btn btn-outline-warning" href="{% url 'login' %}">Login/SignUp</a>
         </div>
     </nav>
 
@@ -66,13 +79,16 @@
     {% endblock %}
 
 
-    <footer class="footer mt-auto py-3" style="    background-color: #f5f5f5;">
-        <div class="container">
-            <div class="col-lg-6">
-                <span class="text-muted">©2019 Archivist Inc. </span>
-            </div>
-            <div class="col-lg-6">
+    <footer class="footer mt-auto py-3" style="background-color: #f5f5f5; text-align: center" >
+        <div class="container row ">
+            <div class="col-lg-6" style="margin-bottom: 20px ">
+                <span class="text-muted">©2019 Archivist Inc. </span><br>
                 <span class="text-muted">Choose your course, wisely</span>
+            </div>
+            <div class="col-lg-6" style="float: right">
+                <span class="text-muted">Are you an Archivist employee?</span>
+                <br>
+                <a href="{% url 'admin:index' %}">Admin Login</a>
             </div>
         </div>
     </footer>
@@ -84,6 +100,15 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"
         crossorigin="anonymous"></script>
+
+        <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+    <script src="{% static 'vendor/tilt/tilt.jquery.min.js' %}"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+    </script>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>

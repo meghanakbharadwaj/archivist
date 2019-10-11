@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block content %} 
+{% block content %}
 <div class="container">
     <div class="page-heading">
         <h1>Choose your course</h1>
@@ -14,9 +14,11 @@
                 <a class="btn btn-light btn-block btn-lg" style="font-size: 20px" href="#" role="button"> <i
                         class="fas fa-caret-up fa-lg"></i><br>10
                 </a>
+
+
             </div>
             <div class="col-lg-1">
-                <img src="{{course.provider.provider_logo.url}}" height="75" width="" alt="">
+                <img src="{{course.provider.provider_logo.url}}" height="" width="75" alt="">
             </div>
             <div class="col-lg-8">
                 <h4 class="card-title">{{course.title}}</h5>
@@ -28,11 +30,14 @@
                     <span class="badge badge-info badge-pill" data-toggle="tooltip" data-placement="bottom"
                         title="This course contains {{course.Medium}} tutorials">{{course.Medium}}</span>
                     &nbsp;
+
             </div>
-            <div class="col-lg-2">
-                <a class="btn btn-outline-success btn-lg" style="font-size: 15px" href="{% url 'courseLink' course_name=course.title %}" role="button"> <i
+            <div class="col-lg-2" style="text-align: center">
+                <a class="btn btn-outline-success btn-lg" style="font-size: 15px; margin-bottom: 5px"
+                    href="{% url 'courseLink' course_name=course.title %}" role="button"> <i
                         class="fas fa-external-link-alt"></i><br>Open Course
                 </a>
+                <a href="">Reviews</a>
             </div>
         </div>
     </div>

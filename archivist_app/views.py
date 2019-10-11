@@ -25,3 +25,6 @@ def courses(request,key):
 def courseLink(request,course_name):
     course = Course.objects.get(title = course_name)
     return redirect(course.course_link)
+
+def login(request):
+    return render(request,'login.html')
