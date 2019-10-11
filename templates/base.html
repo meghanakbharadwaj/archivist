@@ -21,10 +21,10 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/52887b1f6b.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/png" href="{% static 'images/tri.png' %}"/>
+
 <!--===============================================================================================-->
 <!-- LOGIN styles -->
-    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
@@ -37,7 +37,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark  " style="background-color:#154854;:#622a8c;">
-            <a href="#" class="navbar-left"><img src="{% static 'images/logo3.png' %}" height="50"></a>
+            <a href="{% url 'home' %}" class="navbar-left"><img src="{% static 'images/logo3.png' %}" height="50"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -46,7 +46,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -62,7 +62,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    <a class="nav-link" href="{% url 'categories' %}" tabindex="-1">Courses</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -79,16 +79,16 @@
     {% endblock %}
 
 
-    <footer class="footer mt-auto py-3" style="background-color: #f5f5f5; text-align: center" >
+    <footer class="footer d-flex justify-content-around" style="background-color: #f5f5f5; text-align: center" >
         <div class="container row ">
-            <div class="col-lg-6" style="margin-bottom: 20px ">
+            <div class="col-lg-6" style="margin-bottom:20px; margin-top: 20px ">
                 <span class="text-muted">©2019 Archivist Inc. </span><br>
                 <span class="text-muted">Choose your course, wisely</span>
             </div>
-            <div class="col-lg-6" style="float: right">
-                <span class="text-muted">Are you an Archivist employee?</span>
+            <div class="col-lg-6" style="margin-top: 20px">
+                <span class="text-muted">Are you an Archivist admin?</span>
                 <br>
-                <a href="{% url 'admin:index' %}">Admin Login</a>
+                <a href="{% url 'admin:index' %}">Admin Login <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i></a>
             </div>
         </div>
     </footer>
