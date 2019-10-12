@@ -23,4 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
+admin.site.site_header = 'Archivist Administration'
+
 urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
