@@ -25,7 +25,7 @@
 
 <!--===============================================================================================-->
 <!-- LOGIN styles -->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
@@ -55,14 +55,13 @@
                         Categories
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="{% url 'categories' dom='Programming' %}">Programming and Development</a>
+                        <a class="dropdown-item" href="{% url 'categories' dom='Design' %}">Design</a>
+                        <a class="dropdown-item" href="{% url 'categories' dom='Finance' %}">Finance</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'categories' %}" tabindex="-1">Courses</a>
+                    <a class="nav-link" href="{% url 'categories' dom='all' %}" tabindex="-1">Courses</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -106,7 +105,7 @@
 	<script >
 		$('.js-tilt').tilt({
 			scale: 1.1
-		})
+		})        
     </script>
     <script src="{% static 'js/main.js' %}"></script>
 </body>
