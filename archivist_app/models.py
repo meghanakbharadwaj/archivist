@@ -31,8 +31,8 @@ class Course(models.Model):
     title = models.CharField(max_length=100)
     provider = models.ForeignKey(Course_Provider, on_delete = models.CASCADE)
     course_link = models.URLField()
-    course_type = models.CharField(max_length=10,choices=(('Paid','Paid'),('Not Paid','Not Paid')))
-    Medium = models.CharField(max_length=20,choices=(('Video','Video'),('Documents','Documents')))
+    course_type = models.CharField(max_length=10,choices=(('Paid','Paid'),('Free','Free')))
+    Medium = models.CharField(max_length=20,choices=(('Video','Video'),('Documents','Documents'),('Book','Book')))
     description = models.TextField()
     author = models.CharField(max_length=50)
 

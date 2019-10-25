@@ -13,8 +13,11 @@ def addCourseView(request):
     return render(request,'addCourse.html')
 
 
-def categories(request):
-    keywords = Keywords.objects.all()
+def categories(request,dom):
+    if dom != 'all':
+        keywords = Keywords.objects.all().filter(domain__domain_name = dom)
+    else:
+        keywords = Keywords.objects.all()
     return render(request,'categories.html',{'keywords':keywords})
 
 def courses(request,key):
