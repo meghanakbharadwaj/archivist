@@ -13,11 +13,11 @@ def signUp(request):
         password2 = request.POST['password2']
         
         if User.objects.filter(email=email).exists():
-            messages.info(request,'An account exists with this Email id.\n Try to Login!',extra_tags='email_exists')
+            messages.info(request,'An account exists with this Email id\n Try to Login!',extra_tags='email_exists')
             return redirect('signup')
         
         elif User.objects.filter(username=userName).exists():
-            messages.info(request,'Username taken.\n Try a different one.',extra_tags='username_exists')
+            messages.info(request,'Username taken\n Try a different one',extra_tags='username_exists')
             return redirect('signup')
         
         elif password1 != password2:
@@ -28,12 +28,24 @@ def signUp(request):
             user = User.objects.create_user(username=userName,password=password1,email=email, first_name=firstName, last_name=lastName)
             user.save()
             print('User created')
-            return redirect('/')
+            return redirect('login')
     else:
         return render(request,'signup.html') 
     
 def login(request):
     if request.method == 'POST':
-        pass
+        username = request.POST['username']
+        password = request.POST['password']
+        user = auth.authenticate(username=username,password=password)
+        if user is not None:
+            auth.login(request,user)
+            return redirect('/')
+        else:
+            messages.error(request,'Invalid Credentials\nTry Again')
+            return redirect('login')
     else:
         return render(request,'login.html')
+    
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
