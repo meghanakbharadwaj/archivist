@@ -31,3 +31,8 @@ def courseLink(request,course_name):
 
 def login(request):
     return render(request,'login.html')
+
+def search(request):
+    keywords = Keywords.objects.filter(keyword__icontains=request.GET.get('search'))
+    courses = Course.objects.filter(title__icontains = request.GET.get('search'))
+    return render(request,'categories.html',{'keywords':keywords,'courses':courses})
