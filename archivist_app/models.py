@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -35,6 +35,7 @@ class Course(models.Model):
     Medium = models.CharField(max_length=20,choices=(('Video','Video'),('Documents','Documents'),('Book','Book')))
     description = models.TextField()
     author = models.CharField(max_length=50)
+    votes = models.IntegerField(default=0)
 
     def __str__(self):
         return "%s - %s" % (self.title,self.provider)
@@ -46,3 +47,7 @@ class Reviews(models.Model):
 
     def __str__(self):
         return self.review
+
+class Upvote(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
