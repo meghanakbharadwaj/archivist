@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    {% if course %}
+
+    <div class="card" style="padding: 20px 0 20px 0; margin-top: 20px">
+        <div class="card-body row flex d-flex justify-content-center">
+
+            <div class="col-lg-1 col-xs-6">
+                <img src="{{course.provider.provider_logo.url}}" height="" width="75" alt="">
+            </div>
+
+            <div class="col-lg-9 col-xs-12">
+                <h4 class="card-title">{{course.title}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{course.provider}} &nbsp;|&nbsp; {{course.author}}</h6>
+                    <p class="card-text">{{course.description}}</p>
+                    <span class="badge badge-warning badge-pill" data-toggle="tooltip" data-placement="bottom"
+                        title="This is a {{course.course_type}} course">{{course.course_type}}</span>
+                    &nbsp;
+                    <span class="badge badge-info badge-pill" data-toggle="tooltip" data-placement="bottom"
+                        title="This course contains {{course.Medium}} tutorials">{{course.Medium}}</span>
+                    &nbsp;
+
+            </div>
+            <div class="col-lg-2 col-xs-12" style="text-align: center">
+                <a class="btn btn-outline-success btn-lg" style="font-size: 15px; margin-bottom: 5px"
+                    href="{% url 'courseLink' course_name=course.title %}" role="button"> <i
+                        class="fas fa-external-link-alt"></i><br>Open Course
+                </a>
+                <br>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="page-heading">
+        <h2>Comments</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+
+            <form class="form-group">
+                <label for="exampleFormControlTextarea1">Add a public comment</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write a comment..."></textarea>
+                <button class="btn btn-primary" style="float: right; margin:10px" type="submit">Post</button>
+            </form>
+            <div class="clearfix"></div>
+            <hr>
+            <h5 style="margin-bottom: 5px;">All comments</h5>
+            {% for comment in comments %}
+            <div class="card row" style="padding: 0 10px 0px 10px;">
+                <div class="card-body flex d-flex ">
+                    <div class="col-md-10">
+                        <span style="margin-bottom: 1px;">{{comment.user.first_name}}
+                            {{comment.user.last_name}}</span>&nbsp;
+                        <span class="card-subtitle text-muted">(@{{comment.user}}) </span>
+                        <p style="padding: 5px 20px;">{{comment.content}}</p>
+                    </div>
+                    <div class="col-md-2" style="text-align:right;">
+                        <p class="text-muted" style="font-size: 0.7em;">
+                            {{comment.timestamp|timesince}} ago
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+
+
+    <div class="row bootstrap snippets">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 col-md-offset-2 col-sm-12">
+            <div class="comment-wrapper">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        Comment panel
+                    </div>
+                    <div class="panel-body">
+                        <textarea class="form-control" placeholder="write a comment..." rows="3"></textarea>
+                        <br>
+                        <button type="button" class="btn btn-info pull-right">Post</button>
+                        <div class="clearfix"></div>
+                        <hr>
+                        <ul class="media-list">
+                            <li class="media">
+                                <a href="#" class="pull-left">
+                                    <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
+                                </a>
+                                <div class="media-body">
+                                    <span class="text-muted pull-right">
+                                        <small class="text-muted">30 min ago</small>
+                                    </span>
+                                    <strong class="text-success">@MartinoMont</strong>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                        Lorem ipsum dolor sit amet, <a href="#">#consecteturadipiscing </a>.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <a href="#" class="pull-left">
+                                    <img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
+                                </a>
+                                <div class="media-body">
+                                    <span class="text-muted pull-right">
+                                        <small class="text-muted">30 min ago</small>
+                                    </span>
+                                    <strong class="text-success">@LaurenceCorreil</strong>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                        Lorem ipsum dolor <a href="#">#ipsumdolor </a>adipiscing elit.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <a href="#" class="pull-left">
+                                    <img src="https://bootdey.com/img/Content/user_3.jpg" alt="" class="img-circle">
+                                </a>
+                                <div class="media-body">
+                                    <span class="text-muted pull-right">
+                                        <small class="text-muted">30 min ago</small>
+                                    </span>
+                                    <strong class="text-success">@JohnNida</strong>
+                                    <p>
+                                        {% for comment in comments %}
+                                        {{comment.content}}
+                                        {% endfor %}
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+
+
+</div>
+
+
+{% endblock %}

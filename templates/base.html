@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Archivist</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/myStyles.css' %}">
@@ -21,23 +21,23 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/52887b1f6b.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/png" href="{% static 'images/tri.png' %}"/>
+    <link rel="icon" type="image/png" href="{% static 'images/tri.png' %}" />
 
-<!--===============================================================================================-->
-<!-- LOGIN styles -->
-	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+    <!--===============================================================================================-->
+    <!-- LOGIN styles -->
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-    
-<!--===============================================================================================-->
+
+    <!--===============================================================================================-->
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark  " style="background-color:#154854;:#622a8c;">
-            <a href="{% url 'home' %}" class="navbar-left"><img src="{% static 'images/logo3.png' %}" height="50"></a>
+    <nav class="navbar navbar-expand-lg navbar-dark  " style="background-color:#154854;">
+        <a href="{% url 'home' %}" class="navbar-left"><img src="{% static 'images/logo3.png' %}" height="50"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -55,7 +55,8 @@
                         Categories
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'categories' dom='Programming' %}">Programming and Development</a>
+                        <a class="dropdown-item" href="{% url 'categories' dom='Programming' %}">Programming and
+                            Development</a>
                         <a class="dropdown-item" href="{% url 'categories' dom='Design' %}">Design</a>
                         <a class="dropdown-item" href="{% url 'categories' dom='Finance' %}">Finance</a>
                     </div>
@@ -64,35 +65,44 @@
                     <a class="nav-link" href="{% url 'categories' dom='all' %}" tabindex="-1">Courses</a>
                 </li>
                 <li>
-                <form class="form-inline my-2 my-lg-0" style="margin-left:50px;" method="GET" action="{% url 'search' %}">
-                        {% csrf_token %}
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
-                        <button class="btn btn-outline-light my-2 my-sm-0 " type="submit">Search</button>
-                </form>
+                    <form class="form-inline my-2 my-lg-0" style="margin-left:50px;" method="GET"
+                    action="{% url 'search' %}">
+                    {% csrf_token %}
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search courses" name="search">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-light" type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
                 </li>
             </ul>
-           
+
 
             <ul class="nav navbar mr-md-3 justify-content-end">
-            {% if user.is_authenticated %}
+                {% if user.is_authenticated %}
                 <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true" style="color: #f5f5f5;">Hello, {{user.first_name}}</a>
-                      </li>
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
+                        style="color: #f5f5f5;">Hello, {{user.first_name}}</a>
+                </li>
                 <li class="nav-item dropdown rightmost">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-2x fa-user-circle" style="color: #f5f5f5;"></i>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="disabled" href="#"></a>
-                            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-                        </div>
-                    </li>
-            {% else %}
-            <li>
-                <a role="button" class="btn btn-outline-warning" href="{% url 'login' %}">Login/SignUp</a>
-            </li>
-            {% endif %}
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #f5f5f5;">
+                        <i class="fas fa-2x fa-user-circle"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="disabled" href="#"></a>
+                        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                    </div>
+                </li>
+                {% else %}
+                <li>
+                    <a role="button" class="btn btn-outline-warning" href="{% url 'login' %}">Login/SignUp</a>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </nav>
@@ -103,7 +113,7 @@
     {% endblock %}
 
 
-    <footer class="footer d-flex justify-content-around" style="background-color: #f5f5f5; text-align: center" >
+    <footer class="footer d-flex justify-content-around" style="background-color: #f5f5f5; text-align: center">
         <div class="container row ">
             <div class="col-lg-6" style="margin-bottom:20px; margin-top: 20px ">
                 <span class="text-muted">©2019 Archivist Inc. </span><br>
@@ -112,7 +122,8 @@
             <div class="col-lg-6" style="margin-top: 20px">
                 <span class="text-muted">Are you an Archivist admin?</span>
                 <br>
-                <a href="{% url 'admin:index' %}">Admin Login<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i></a>
+                <a href="{% url 'admin:index' %}">Admin Login<i class="fa fa-long-arrow-right m-l-5"
+                        aria-hidden="true"></i></a>
             </div>
         </div>
     </footer>
@@ -125,12 +136,12 @@
         integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"
         crossorigin="anonymous"></script>
 
-        <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+    <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
     <script src="{% static 'vendor/tilt/tilt.jquery.min.js' %}"></script>
-	<script >
-		$('.js-tilt').tilt({
-			scale: 1.1
-		})        
+    <script>
+        $('.js-tilt').tilt({
+            scale: 1.1
+        })        
     </script>
     <script src="{% static 'js/main.js' %}"></script>
 </body>
