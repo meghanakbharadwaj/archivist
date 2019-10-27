@@ -6,13 +6,23 @@
         <h1>Choose your course</h1>
         <!-- <p>Find the Best Courses & Tutorials here</p> -->
     </div>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>{{message|linebreaks}}</strong> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+    {% endif %}
     {% for course in courses %}
     <div class="card" style="padding: 20px 0 20px 0;">
         <div class="card-body row flex d-flex justify-content-center">
 
             <div class="col-lg-1 col-xs-6">
-                <a class="btn btn-light btn-block btn-lg" style="font-size: 20px" href="#" role="button"> <i
-                        class="fas fa-caret-up fa-lg"></i><br>10
+                <a class="btn btn-light btn-block btn-lg" style="font-size: 20px" href="{% url 'upvote' course_title=course.title keyword=course.keyword.keyword %}" role="button"> <i
+                        class="fas fa-caret-up fa-lg"></i><br>{{course.votes}}
                 </a>
             </div>
 
