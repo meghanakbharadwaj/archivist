@@ -36,117 +36,96 @@
     {% endif %}
 
     <div class="page-heading">
-        <h2>Comments</h2>
+        <h2><i class="far fa-comment-alt"></i>&nbsp; Comments</h2>
     </div>
 
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    <strong>{{message|linebreaks}}</strong> 
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endfor %}
+                {% endif %}
 
-            <form class="form-group">
+            <form class="form-group" method="POST" action="{% url 'postComment' course_id=course.id %}">
+                {% csrf_token %}
                 <label for="exampleFormControlTextarea1">Add a public comment</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write a comment..."></textarea>
-                <button class="btn btn-primary" style="float: right; margin:10px" type="submit">Post</button>
+                <textarea class="form-control" name="content_data" id="exampleFormControlTextarea1" rows="3"
+                    placeholder="Write a comment..."></textarea>
+                <button class="btn btn-info" style="float: right; margin:10px; background-color:#186b7e"
+                    type="submit">Post Comment</button>
             </form>
             <div class="clearfix"></div>
             <hr>
             <h5 style="margin-bottom: 5px;">All comments</h5>
+            {% if not comments %}
+                <h5 style="text-align: center; padding:30px">It's quite empty in here<br>Be the first one to comment</h5>
+            {% endif %}
             {% for comment in comments %}
             <div class="card row" style="padding: 0 10px 0px 10px;">
-                <div class="card-body flex d-flex ">
-                    <div class="col-md-10">
-                        <span style="margin-bottom: 1px;">{{comment.user.first_name}}
-                            {{comment.user.last_name}}</span>&nbsp;
-                        <span class="card-subtitle text-muted">(@{{comment.user}}) </span>
-                        <p style="padding: 5px 20px;">{{comment.content}}</p>
+                <div class="card-body col-xs-12">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <span style="margin-bottom: 1px;">{{comment.user.first_name}}
+                                {{comment.user.last_name}}</span>&nbsp;
+                            <span class="card-subtitle text-muted">(@{{comment.user}}) </span>
+                            <p style="padding: 5px 20px;">{{comment.content}}</p>
+                        </div>
+                        <div class="col-md-2" style="text-align:right;">
+                            <p class="text-muted" style="font-size: 0.7em;">
+                                {{comment.timestamp|timesince}} ago
+                            </p>
+                        </div>
                     </div>
-                    <div class="col-md-2" style="text-align:right;">
-                        <p class="text-muted" style="font-size: 0.7em;">
-                            {{comment.timestamp|timesince}} ago
-                        </p>
+
+                    <div class="row" style="border-left: 5px solid #c3c6c9; margin:10px 0 20px 15px">
+                        {% for reply in comment.children %}
+                        <div class="col-md-10" style="margin: 0 0 10px 0;">
+                            <span style="margin-bottom: 1px;">{{reply.user.first_name}}
+                                {{reply.user.last_name}}</span>&nbsp;
+                            <span class="card-subtitle text-muted">(@{{reply.user}}) </span>
+                            <p style="padding: 5px 20px;">{{reply.content}}</p>
+                        </div>
+                        <div class="col-md-2" style="text-align:right;">
+                            <p class="text-muted" style="font-size: 0.7em;">
+                                {{reply.timestamp|timesince}} ago
+                            </p>
+                        </div>
+                        {% endfor %}
                     </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-        <div class="col-md-1"></div>
-    </div>
 
+                    <button type="button" class="row" data-toggle="collapse" data-target="#reply{{comment.id}}"
+                        style="color:darkcyan; margin-bottom: 5px; margin-left:20px"><i class="fas fa-reply-all"></i>&nbsp; Reply</button>
+                    <div id="reply{{comment.id}}" class="col-md-12 collapse">
+                        <form class="form-group row" method="POST"
+                            action="{% url 'postComment' course_id=course.id parent_id=comment.id %}"
+                            style="padding: 0 10px 0px 10px;">
+                            {% csrf_token %}
+                            <div class="col-md-11">
+                                <textarea class="form-control" name="content_data" id="exampleFormControlTextarea1"
+                                    rows="1" placeholder="Write a reply..."></textarea>
+                            </div>
+                            <div class="col-md-1">
+                                <button class="btn btn-info" style="background-color:#186b7e;" type="submit"><i
+                                        class="fas fa-caret-right fa-lg"></i></button>
+                            </div>
 
-
-    <div class="row bootstrap snippets">
-        <div class="col-md-1"></div>
-        <div class="col-md-10 col-md-offset-2 col-sm-12">
-            <div class="comment-wrapper">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        Comment panel
-                    </div>
-                    <div class="panel-body">
-                        <textarea class="form-control" placeholder="write a comment..." rows="3"></textarea>
-                        <br>
-                        <button type="button" class="btn btn-info pull-right">Post</button>
-                        <div class="clearfix"></div>
-                        <hr>
-                        <ul class="media-list">
-                            <li class="media">
-                                <a href="#" class="pull-left">
-                                    <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
-                                </a>
-                                <div class="media-body">
-                                    <span class="text-muted pull-right">
-                                        <small class="text-muted">30 min ago</small>
-                                    </span>
-                                    <strong class="text-success">@MartinoMont</strong>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Lorem ipsum dolor sit amet, <a href="#">#consecteturadipiscing </a>.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <a href="#" class="pull-left">
-                                    <img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
-                                </a>
-                                <div class="media-body">
-                                    <span class="text-muted pull-right">
-                                        <small class="text-muted">30 min ago</small>
-                                    </span>
-                                    <strong class="text-success">@LaurenceCorreil</strong>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Lorem ipsum dolor <a href="#">#ipsumdolor </a>adipiscing elit.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <a href="#" class="pull-left">
-                                    <img src="https://bootdey.com/img/Content/user_3.jpg" alt="" class="img-circle">
-                                </a>
-                                <div class="media-body">
-                                    <span class="text-muted pull-right">
-                                        <small class="text-muted">30 min ago</small>
-                                    </span>
-                                    <strong class="text-success">@JohnNida</strong>
-                                    <p>
-                                        {% for comment in comments %}
-                                        {{comment.content}}
-                                        {% endfor %}
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
+                        </form>
                     </div>
                 </div>
             </div>
-
+                {% endfor %}
+            </div>
+            <div class="col-md-1"></div>
         </div>
-        <div class="col-md-1"></div>
+
     </div>
 
 
-
-</div>
-
-
-{% endblock %}
+    {% endblock %}

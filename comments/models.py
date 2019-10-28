@@ -9,8 +9,21 @@ class Comment(models.Model):
     course = models.ForeignKey(Course,on_delete=models.CASCADE)
     content = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
+    parent = models.ForeignKey('self', null=True, blank=True,on_delete=models.CASCADE)
     
     def __str__(self):
         return str(self.user.username)
+    
+    def children(self): #replies
+        return Comment.objects.filter(parent=self)
+    
+    class Meta:
+        ordering = ['-timestamp']
+    
+    @property
+    def isParent(self):
+        if self.parent is None:
+            return True
+        return False
     
     
