@@ -2,3 +2,4 @@
 archivist/__pycache__
 archivist_app/__pycache__
 archivist_app/migrations
+comments/migrations

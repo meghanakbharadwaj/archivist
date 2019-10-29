@@ -1,87 +1,23 @@
 {% extends 'base.html' %}
-{% load static%}
-
 
 {% block content %}
-
-
-<section class="py-5" style="background: no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
-  background-image: url('{% static 'images/bg4.jpg' %}');">
-    <!-- Put anything you want here! There is just a spacer below for demo purposes! -->
-    <div style="height: 400px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-center" >
-                    <h1 style="color: white; margin-bottom:20px">Find the best of online courses & tutorials here</h1>
-                    <a class="btn btn-primary btn-lg" href="{% url 'categories' dom='all' %}">Explore Courses</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <div class="container">
-    <h2 style="margin:40px;text-align:center">Explore courses offered by</h2>
-    <section class="customer-logos slider">
-        {% for provider in providers %}
-        <div class="slide">
-            <a href="{{provider.provider_link}}" target="_blank">
-                <img src="{{provider.provider_logo.url}}" height="" width="">
-            </a>
-        </div>
-        {% endfor %}
-        {% for provider in providers %}
-        <div class="slide">
-            <a href="{{provider.provider_link}}" target="_blank">
-                <img src="{{provider.provider_logo.url}}" height="" width="">
-            </a>
-        </div>
-        {% endfor %}
 
-        {% for provider in providers %}
-        <div class="slide">
-            <a href="{{provider.provider_link}}" target="_blank">
-                <img src="{{provider.provider_logo.url}}" height="" width="">
-            </a>
-        </div>
-        {% endfor %}
-        {% for provider in providers %}
-        <div class="slide">
-            <a href="{{provider.provider_link}}" target="_blank">
-                <img src="{{provider.provider_logo.url}}" height="" width="">
-            </a>
-        </div>
-        {% endfor %}
-    </section>
-</div>
-<section class="py-5" style="background: no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
-  background-image: url('{% static 'images/bg61.jpg' %}');">
-    <!-- Put anything you want here! There is just a spacer below for demo purposes! -->
-    <div style="height: 450px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-10 col-xs-12" >
-                    <div style="text-align: center;">
-                            <img src="{% static 'images/logo3_transp.png' %}" height="100">
-                    </div>
-                    <h1 style="color: white; margin:20px 0 20px 0">About us</h1>
-                    <h4 style="color: white;">
-                        Our aim is to provide an unbiased platform for learners to discover the best sources to learn a new skill.<br><br>
-                        We at Archivist aggregate courses from many providers to make it easy to find the best courses, wherever they exist on the web.<br><br>
-                        Users can upvote the courses which they have already taken and liked. They can discuss about the courses in comment section.
-                        </h4>
-                </div>
-            </div>
-        </div>
+    <div class="page-heading">
+        <h1>What do you want to learn?</h1>
+        <p>Find the Best Courses & Tutorials here</p>
     </div>
-</section>
+
+    <div class="row flex">
+        {% for keyword in keywords %}
+        <div class="col-lg-4 col-sm-6 col-xs-12">
+            <a class="btn btn-lg btn-block btn-outline-dark" href="{% url 'courses' key=keyword.keyword %}"
+                role="button" name="{{keyword.keyword}}"><img src="{{keyword.logo.url}}"
+                    height="50">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{keyword.keyword}}
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
 {% endblock %}

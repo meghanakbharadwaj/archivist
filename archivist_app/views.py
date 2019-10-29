@@ -76,3 +76,4 @@ def upvote(request,course_title,keyword):
         courses = Course.objects.all().filter(keyword__keyword = keyword).order_by('-votes')
         # return render(request,'courseList.html',{'courses' : courses})
         return redirect('courses',key=keyword)
+
