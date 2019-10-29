@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container">
     <div class="page-heading">
-        <h1>Choose your course</h1>
+        <h1><img src="{{keyword.logo.url}}" alt="keyword-logo" height="50">&nbsp;&nbsp;{{keyword.keyword}} courses and tutorials</h1>
         <!-- <p>Find the Best Courses & Tutorials here</p> -->
     </div>
     {% if messages %}
@@ -16,7 +16,7 @@
     </div>
     {% endfor %}
     {% endif %}
-    {% for course in courses %}
+    {% for course,count in countList %}
     <div class="card" style="padding: 20px 0 20px 0;">
         <div class="card-body row flex d-flex justify-content-center">
 
@@ -48,6 +48,7 @@
                         class="fas fa-external-link-alt"></i><br>Open Course
                 </a>
                 <br>
+                <a href="{% url 'comments' course_id=course.id %}">{{count}} comments</a>
                 <!-- <a href="">Reviews</a> -->
             </div>
         </div>

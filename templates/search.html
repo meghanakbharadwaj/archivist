@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+
+    {% if keywords %}
+    <div class="page-heading">
+        <h2>Explore these topics related to your search</h2>
+    </div>
+    <div class="row flex">
+        {% for keyword in keywords %}
+        <div class="col-lg-4 col-sm-6 col-xs-12">
+            <a class="btn btn-lg btn-block btn-outline-dark" href="{% url 'courses' key=keyword.keyword %}"
+                role="button" name="{{keyword.keyword}}"><img src="{{keyword.logo.url}}"
+                    height="50">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{keyword.keyword}}
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="page-heading">
+        <h2>Some Courses based on your search</h2>
+    </div>
+
+    {% if not countList %}
+    <h5 style="text-align: center; padding:30px; margin-bottom:100px">No courses found! Try to search something else<br>Or explore in Courses
+        Tab</h5>
+    {% endif %}
+
+    {% for course,count in countList %}
+    <div class="card" style="padding: 20px 0 20px 0;">
+            <div class="card-body row flex d-flex justify-content-center">
+    
+                <div class="col-lg-1 col-xs-6">
+                    <a class="btn btn-light btn-block btn-lg" style="font-size: 20px" href="{% url 'upvote' course_title=course.title keyword=course.keyword.keyword %}" role="button"> <i
+                            class="fas fa-caret-up fa-lg"></i><br>{{course.votes}}
+                    </a>
+                </div>
+    
+                <div class="col-lg-1 col-xs-6">
+                    <img src="{{course.provider.provider_logo.url}}" height="" width="75" alt="">
+                </div>
+    
+                <div class="col-lg-8 col-xs-12">
+                    <h4 class="card-title">{{course.title}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{course.provider}} &nbsp;|&nbsp; {{course.author}}</h6>
+                        <p class="card-text">{{course.description}}</p>
+                        <span class="badge badge-warning badge-pill" data-toggle="tooltip" data-placement="bottom"
+                            title="This is a {{course.course_type}} course">{{course.course_type}}</span>
+                        &nbsp;
+                        <span class="badge badge-info badge-pill" data-toggle="tooltip" data-placement="bottom"
+                            title="This course contains {{course.Medium}} tutorials">{{course.Medium}}</span>
+                        &nbsp;
+    
+                </div>
+                <div class="col-lg-2 col-xs-12" style="text-align: center">
+                    <a class="btn btn-outline-success btn-lg" style="font-size: 15px; margin-bottom: 5px"
+                        href="{% url 'courseLink' course_name=course.title %}" role="button"> <i
+                            class="fas fa-external-link-alt"></i><br>Open Course
+                    </a>
+                    <br>
+                    <a href="{% url 'comments' course_id=course.id %}">{{count}} comments</a>
+                    <!-- <a href="">Reviews</a> -->
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

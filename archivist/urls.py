@@ -21,7 +21,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('',include('archivist_app.urls')),
     path('admin/', admin.site.urls),
-    path('accounts/',include('accounts.urls'))
+    path('accounts/',include('accounts.urls')),
+    path('comments/',include('comments.urls'))
 ]
 
 admin.site.site_header = 'Archivist Administration'
