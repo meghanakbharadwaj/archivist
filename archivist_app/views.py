@@ -7,10 +7,12 @@ from comments.models import Comment
 
 # Create your views here.
 def home(request):
-    return render(request,'home.html')
+    providers = Course_Provider.objects.all()
+    return render(request,'home.html',{'providers':providers})
 
 def homeView(request):
-    return render(request,'home.html')
+    providers = Course_Provider.objects.all()
+    return render(request,'home.html',{'providers':providers})
 
 def addCourseView(request):
     return render(request,'addCourse.html')

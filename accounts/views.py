@@ -28,6 +28,7 @@ def signUp(request):
             user = User.objects.create_user(username=userName,password=password1,email=email, first_name=firstName, last_name=lastName)
             user.save()
             print('User created')
+            messages.error(request,'Signed up successfully\nLogin with credentials',extra_tags="success")
             return redirect('login')
     else:
         return render(request,'signup.html') 
@@ -36,12 +37,12 @@ def login(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        user = auth.authenticate(username=username,password=password)
+        user = auth.authenticate(username=username,password=password) 
         if user is not None:
             auth.login(request,user)
             return redirect('/')
         else:
-            messages.error(request,'Invalid Credentials\nTry Again')
+            messages.error(request,'Invalid Credentials\nTry Again',extra_tags="danger")
             return redirect('login')
     else:
         return render(request,'login.html')

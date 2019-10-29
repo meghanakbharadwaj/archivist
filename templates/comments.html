@@ -101,7 +101,7 @@
                     </div>
 
                     <button type="button" class="row" data-toggle="collapse" data-target="#reply{{comment.id}}"
-                        style="color:darkcyan; margin-bottom: 5px; margin-left:20px"><i class="fas fa-reply-all"></i>&nbsp; Reply</button>
+                        style="color:darkcyan; margin-bottom: 5px; margin-left:20px"><i class="fas fa-reply"></i>&nbsp; Reply</button>
                     <div id="reply{{comment.id}}" class="col-md-12 collapse">
                         <form class="form-group row" method="POST"
                             action="{% url 'postComment' course_id=course.id parent_id=comment.id %}"
