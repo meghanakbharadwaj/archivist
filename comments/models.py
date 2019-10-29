@@ -17,8 +17,8 @@ class Comment(models.Model):
     def children(self): #replies
         return Comment.objects.filter(parent=self)
     
-    class Meta:
-        ordering = ['-timestamp']
+    # class Meta:
+    #     ordering = ['-timestamp']
     
     @property
     def isParent(self):

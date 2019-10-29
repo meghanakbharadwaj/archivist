@@ -8,7 +8,7 @@ import re
 
 def comments(request,course_id):
     course = Course.objects.get(id = course_id)
-    comments = Comment.objects.filter(course_id = course_id, parent = None)
+    comments = Comment.objects.filter(course_id = course_id, parent = None).order_by('-timestamp')
     return render(request,'comments.html',{'course':course,'comments':comments,})
 
 def postComment(request,course_id,parent_id=None):
