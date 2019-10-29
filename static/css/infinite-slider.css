@@ -7,12 +7,18 @@
     width: 100%;
 }
 .slick-prev {
+    left: 100px;
+}
+.slick-next {
+    right: 100px;
+}
+/* .slick-prev {
     margin-left: 40px;
   }
 
   .slick-next {
     margin-right: 40px;
-  }
+  } */
 
 .slick-slider
 {
@@ -120,4 +126,3 @@
 .slick-arrow.slick-hidden {
     display: none;
 }
-

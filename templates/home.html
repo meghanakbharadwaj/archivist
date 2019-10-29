@@ -15,7 +15,7 @@
     <div style="height: 400px;">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 text-center" >
+                <div class="col-md-6 text-center">
                     <h1 style="color: white; margin-bottom:20px">Find the best of online courses & tutorials here</h1>
                     <a class="btn btn-primary btn-lg" href="{% url 'categories' dom='all' %}">Explore Courses</a>
                 </div>
@@ -25,39 +25,53 @@
 </section>
 
 <div class="container">
-    <h2 style="margin:40px;text-align:center">Explore courses offered by</h2>
-    <section class="customer-logos slider">
-        {% for provider in providers %}
-        <div class="slide">
-            <a href="{{provider.provider_link}}" target="_blank">
-                <img src="{{provider.provider_logo.url}}" height="" width="">
-            </a>
+        <h2 style="margin:40px;text-align:center">Explore courses offered by</h2>
+    <div class="row">
+        <div class="col-md-1" style="text-align:center">
+                <button type='button' class='slick-next pull-right prev'><i class='fa fa-angle-left fa-4x'
+                    aria-hidden='true' style="color:#747b7c"></i></button>
         </div>
-        {% endfor %}
-        {% for provider in providers %}
-        <div class="slide">
-            <a href="{{provider.provider_link}}" target="_blank">
-                <img src="{{provider.provider_logo.url}}" height="" width="">
-            </a>
-        </div>
-        {% endfor %}
+        <div class="col-md-10">
+            <section class="customer-logos slider">
+                {% for provider in providers %}
+                <div class="slide">
+                    <a href="{{provider.provider_link}}" target="_blank">
+                        <img src="{{provider.provider_logo.url}}" height="" width="">
+                    </a>
+                </div>
+                {% endfor %}
+                {% for provider in providers %}
+                <div class="slide">
+                    <a href="{{provider.provider_link}}" target="_blank">
+                        <img src="{{provider.provider_logo.url}}" height="" width="">
+                    </a>
+                </div>
+                {% endfor %}
 
-        {% for provider in providers %}
-        <div class="slide">
-            <a href="{{provider.provider_link}}" target="_blank">
-                <img src="{{provider.provider_logo.url}}" height="" width="">
-            </a>
+                {% for provider in providers %}
+                <div class="slide">
+                    <a href="{{provider.provider_link}}" target="_blank">
+                        <img src="{{provider.provider_logo.url}}" height="" width="">
+                    </a>
+                </div>
+                {% endfor %}
+                {% for provider in providers %}
+                <div class="slide">
+                    <a href="{{provider.provider_link}}" target="_blank">
+                        <img src="{{provider.provider_logo.url}}" height="" width="">
+                    </a>
+                </div>
+                {% endfor %}
+            </section>
         </div>
-        {% endfor %}
-        {% for provider in providers %}
-        <div class="slide">
-            <a href="{{provider.provider_link}}" target="_blank">
-                <img src="{{provider.provider_logo.url}}" height="" width="">
-            </a>
+        <div class="col-md-1" style="text-align:center">
+                <button type='button' class='slick-next pull-right next'><i class='fa fa-angle-right fa-4x'
+                    aria-hidden='true' style="color:#747b7c;"></i></button>
         </div>
-        {% endfor %}
-    </section>
+    </div>
+
 </div>
+
 <section class="py-5" style="background: no-repeat center center scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -69,16 +83,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-2"></div>
-                <div class="col-md-10 col-xs-12" >
+                <div class="col-md-10 col-xs-12">
                     <div style="text-align: center;">
-                            <img src="{% static 'images/logo3_transp.png' %}" height="100">
+                        <img src="{% static 'images/logo3_transp.png' %}" height="100">
                     </div>
                     <h1 style="color: white; margin:20px 0 20px 0">About us</h1>
                     <h4 style="color: white;">
-                        Our aim is to provide an unbiased platform for learners to discover the best sources to learn a new skill.<br><br>
-                        We at Archivist aggregate courses from many providers to make it easy to find the best courses, wherever they exist on the web.<br><br>
-                        Users can upvote the courses which they have already taken and liked. They can discuss about the courses in comment section.
-                        </h4>
+                        Our aim is to provide an unbiased platform for learners to discover the best sources to learn a
+                        new skill.<br><br>
+                        We at Archivist aggregate courses from many providers to make it easy to find the best courses,
+                        wherever they exist on the web.<br><br>
+                        Users can upvote the courses which they have already taken and liked. They can discuss about the
+                        courses in comment section.
+                    </h4>
                 </div>
             </div>
         </div>
