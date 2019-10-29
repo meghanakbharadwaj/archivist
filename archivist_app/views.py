@@ -55,7 +55,7 @@ def search(request):
 
 def upvote(request,course_title,keyword):
     user_id = request.user.id
-    courses = Course.objects.all().filter(keyword__keyword = keyword).order_by('-votes')
+
     if user_id is None:
         messages.info(request,'You must login to upvote a course\n Try to Login!',extra_tags='login_required')
         # return render(request,'courseList.html',{'courses' : courses})
@@ -72,6 +72,8 @@ def upvote(request,course_title,keyword):
             Upvote.objects.create(user = user,course = course_object)
         else:
             messages.info(request,"You've already upvoted this course.",extra_tags='login_required')
+
         courses = Course.objects.all().filter(keyword__keyword = keyword).order_by('-votes')
         # return render(request,'courseList.html',{'courses' : courses})
         return redirect('courses',key=keyword)
+
