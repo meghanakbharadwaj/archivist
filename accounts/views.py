@@ -27,7 +27,7 @@ def signUp(request):
         else:
             user = User.objects.create_user(username=userName,password=password1,email=email, first_name=firstName, last_name=lastName)
             user.save()
-            print('User created')
+            # print('User created')
             messages.error(request,'Signed up successfully\nLogin with credentials',extra_tags="success")
             return redirect('login')
     else:

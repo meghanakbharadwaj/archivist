@@ -25,7 +25,7 @@ SECRET_KEY = 'bg_hz40+2-+8%i4bwt4wcp@4zsl1h&m1w&+p5bk7wd%^$r@7hu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['varshith.serveo.net','archivist.serveo.net','127.0.0.1']
+ALLOWED_HOSTS = ['varshith.serveo.net','archivist.serveo.net','127.0.0.1','archivist.holepunch.io']
 
 
 # Application definition

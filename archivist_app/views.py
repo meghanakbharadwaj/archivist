@@ -6,17 +6,10 @@ from django.contrib import messages
 from comments.models import Comment
 
 # Create your views here.
-def home(request):
-    providers = Course_Provider.objects.all()
-    return render(request,'home.html',{'providers':providers})
 
 def homeView(request):
     providers = Course_Provider.objects.all()
     return render(request,'home.html',{'providers':providers})
-
-def addCourseView(request):
-    return render(request,'addCourse.html')
-
 
 def categories(request,dom):
     if dom != 'all':

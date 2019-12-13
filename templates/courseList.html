@@ -21,7 +21,7 @@
         <div class="card-body row flex d-flex justify-content-center">
 
             <div class="col-lg-1 col-xs-6">
-                <a class="btn btn-light btn-block btn-lg" style="font-size: 20px" href="{% url 'upvote' course_title=course.title keyword=course.keyword.keyword %}" role="button"> <i
+                <a class="btn btn-light btn-block btn-lg" style="font-size: 20px" href="{% url 'upvote' course_title=course.title keyword=course.keyword.keyword %}" target="_blank" role="button"> <i
                         class="fas fa-caret-up fa-lg"></i><br>{{course.votes}}
                 </a>
             </div>
